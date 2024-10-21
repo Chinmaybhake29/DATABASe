@@ -1,0 +1,208 @@
+
+BLOB(Binary Large Object)
+
+SQL> ALTER TABLE table_name
+RENAME COLUMN old_name TO new_name
+
+mysql> alter table vendor add id int PRIMARY KEY auto_increment FIRST;
+
+SQL> alter table signup modify BillingAddress varchar(100);
+
+create table signup(Firstname varchar(30), Lastname varchar(30), EmailID varchar(30), mobileno varchar(30), password varchar(30), Confirmpassword varchar(30), Age varchar(30), Referredbydoctor varchar(30), State varchar(30), City varchar(30), PinCode varchar(30), BillingAddress varchar(30));
+
+Vendor Details List
+
+create table VendorDetailsList(Druglicenseno varchar(30), GSTNo varchar(30),AccountDetails varchar(30), Products varchar(30), DeliveryTime time, PaymentTerms varchar(30), KycDetails varchar(30));
+
+\! cls (Clear Screen)
+
+
+
+create table person1(id int primary key AUTO_INCREMENT, name char(20), address char(20), mobileno text);
+
+SQL> connect / as sysdba
+SQL> select username,password from dba_users;
+SQL> alter user username identified by password;
+SQL> user:- system password:- chinmay
+SQL> system cls;
+SQL> TRUNCATE TABLE name;
+
+1.   select f_name from cust;
+2.insert into student values(&rollno, '&name');
+
+Everytime in sql language we insert data in table rember that use string in 
+('') single line. 
+
+INSERT INTO tablename(email) VALUES('xyz@gmail.com')
+
+insert into student(name,p1,p2,p3,rollno) values('&nm',&p1,&p2,&p3,&rn);
+
+insert into Employee(name,ecode,mobi) values('&nm',&ecode,&mobi);
+
+insert into emp values(&empno,'&ename',&sal,&hiredate,&deptno); 
+
+insert into cust(cust_id,l_name,f_name,area values('&cust_id','&l_name','&f_name','&area');
+
+mysql> alter table person1 modify phno text;
+
+mysql> alter table vendor add id int PRIMARY KEY auto_increment FIRST;
+
+mysql> alter table person1 rename column mobileno to phno;
+
+mysql> create table person1(id int primary key AUTO_INCREMENT, name char(20), address char(20), mobileno text);
+
+alter table Employee(Ename varchar2(10);
+
+ alter table Employee add(hiredate date);
+
+ALTER TABLE Customers DROP COLUMN ContactName;
+
+alter table Employee add(EMAILID varchar2(20));
+
+  ALTER TABLE Table
+  ADD CONSTRAINT PK_Table PRIMARY KEY (DEPTNO);
+
+update student set total=p1+p2+p3, per=(p1+p2+p3)/3;
+
+update Employee set name='AAAA' where EMP_CODE = E101;
+
+update student set name='' where rollno=101;
+
+update invoice set issue_date = to_date('24-JUL-20','dd-mon-yyyy') where inv_no = 'I01';
+
+ delete from emp where empno = 131; 
+
+select ecode, name,mobi Mobile.No, hiredate from Employee;
+
+select e.empno, e.ename, e.deptno, d.dname, d.loc from emp e, dept d;
+ 
+CONSTRAINT PK_Person PRIMARY KEY (ID,LastName)
+
+  create view emp_dept as select e.empno, e.ename, e.deptno, d.dname, d.loc,  e.hiredate, e.sal from emp e, dept d where e.deptno=d.deptno;
+
+ create table invoice(inv_no char(6) primary key, mv_no number(2) not null, cust_id char(3));
+
+ create view customer_invoice as select c.cust_id, c.f_name, c.l_name, i.inv_no, i.mv_no, i.issue_date, i.return_date, c.area, c.phone_no from cust c, invoice i where c.cust_id = i.cust_id;
+
+ Create table invoice(inv_no char(3) primary key,mv_no number(2),cust_id char(3),
+  issue_date date, return_date date);
+
+
+ create or replace procedure dispEmp(eno IN number) IS
+    emp_record emp%rowtype;
+    begin
+         select * into emp_record from emp where empno = eno;
+         dbms_output.put_line('Empno of Employee is ' || emp_record.empno);
+         dbms_output.put_line('Name of Employee is ' || emp_record.ename);
+         dbms_output.put_line('Salary of Employee is' || emp_record.sal);
+         dbms_output.put_line('Joining date of Employee is' || emp_record.hiredate);
+         dbms_output.put_line('Department no of Employee is' || emp_record.deptno);
+    end;
+ /
+
+ set serveroutput on;
+ CREATE OR REPLACE FUNCTION Large(x IN number, y IN number)
+ RETURN number IS
+ BEGIN
+      if x>y then
+         return x;
+      else
+         return y;
+      end if;
+ END;
+
+ CREATE OR REPLACE FUNCTION Addition(x IN number, y IN number)
+ RETURN number IS
+ a number;
+ begin
+      a:=x+y;
+      return a;
+ end;
+ /
+ /
+
+ set line 200
+ set pages 200
+
+select cust_id, f_name, phone_no from cust_invoice where to_char(issue_date,'MON-YY') = 'AUG-20';
+
+select * from movie m, invoice i, cust c where
+   c.cust_id = i.cust_id and
+   m.mv_no = i.mv_no
+3.   select f_name, area from cust;
+4.   select type from movie;
+5.   select * from cust where F_name like '_a%';
+6.   select * from cust where L_name like 'J%';
+      select * from cust where L_name like 'H%';
+7.   select * from cust where area like '_%A';
+8.   select F_name,L_name from cust where area = 'MU';
+9.   select f_name from cust where phone_no > 555000;
+10. select * from cust cu, invoice i where cu.cust_id = i.cust_id;
+11. select * from invoice where cust_id in('A01','A02');
+12. select title from movie where type = 'Action' or type = 'Comedy';
+13. select mv_no from movie where price>=150 and price<=200;
+14. select * from movie_invoice where price >= 150;
+16. select * from movie order by title,type,star;
+17.  select c.f_name, m.type from cust c, invoice i, movie m where
+ c.cust_id = i.cust_id and
+ m.mv_no = i.mv_no 
+ and m.type = 'Horror';
+18. select sqrt(price) from movie;
+20. select cust_id,L_name,f_name,area from cust;
+21. select cust_id,f_name,area,ph_no from cust;
+22. select mv_no, title, type from movie_invoice where star like 'M%';
+23. select inv_no, mv_no from invoice  where inv_no<= I05;
+24. select count(cust_id) from cust;
+25. select avg(price) from movie;
+26. select max(price) from movie;
+      select min(price) from movie;
+27. select count(price) from movie where price >= 150;
+28. select cust_id,mv_no,issue_date,return_date from invoice;
+29. select inv_no, mv_no from cust_invoice;
+      select cust_id, mv_no, issue_date, return_date from cust_invoice;
+30. select avg(price),count(type) from movie;
+31. select count(mv_no) from movie;
+32. select avg(price) from movie where price >= 150;
+33. select count(title) from movie where type = 'Comedy' and type = ' thriller';
+34. select avg(price) from movie where price >= 150 and type='Comedy' and type=' thriller';
+35. select m.mv_no from movie m, invoice i, cust c where
+      c.cust_id = i.cust_id and
+      m.mv_no = i.mv_no
+      and f_name = 'Ishwar';
+36. select f_name,mv_no from  cust_invoice;
+37. select cust_id, title, mv_no from movie_invoice;
+38. select m.title, m.type from movie m, invoice i, cust c where i.cust_id = c.cust_id
+      and m.mv_no = i.mv_no and f_name = 'vijay';
+39. select c.f_name from movie m, invoice i, cust c where
+      c.cust_id = i.cust_id and
+      m.mv_no = i.mv_no
+      and m.type = 'Drama';
+40. select cust.l_name, cust.f_name, movie.type from cust, movie where mv_no >= 3;
+41. select * from movie m, invoice i, cust c where
+      c.cust_id = i.cust_id and
+      m.mv_no = i.mv_no
+      and m.mv_no = '9';
+42. select f_name from cust_invoice where inv_no = 'I10';
+43. select cust_id, f_name, phone_no from cust_invoice where to_char(issue_date,'MON-YY') = 'AUG-20';
+44. select * from cust cu, invoice i, movie m where
+      cu.cust_id = i.cust_id and 
+      m.mv_no = i.mv_no
+      and cu.f_name = 'vijay' and cu.f_name = ' Ishwar';
+45. select * from cust cu, invoice i, movie m where
+      cu.cust_id = i.cust_id and 
+      m.mv_no = i.mv_no;
+46. select * from cust cu, invoice i, movie m where
+      cu.cust_id = i.cust_id and 
+      m.mv_no = i.mv_no
+      and cu.cust_id = 'A01' and cu.cust_id = 'A02';
+47. select cust_id from movie_invoice where star = 'Tom Crusie';
+48. select * from cust;
+49. select cust_id, mv_no, issue_date from invoice;
+51. select issue_date from invoice;
+54. update cust set phone_no = '4663891234' where f_name = 'Pramod';
+55. update cust_invoice set issue_date = to_date('24-JUL-20','dd-mon-yyyy') where cust_id = 'A01';
+56. update movie set price = '250' where title = 'Gone with wind';
+57. delete from invoice where inv_no = 'I08';
+58. 
+59. update cust set area = 'VS' where cust_id = 'A01';
+60. update invoice set  return_date = to_date('16-AUG-20','dd-mon-yyyy') where inv_no = 'I08';
