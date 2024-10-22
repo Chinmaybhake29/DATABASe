@@ -1,0 +1,130 @@
+1) Select the employee id for department 30.
+ mysql> select empno from emp where deptno = 30;
++-------+
+| empno |
++-------+
+|  7499 |
+|  7521 |
+|  7654 |
+|  7698 |
+|  7844 |
+|  7900 |
++-------+
+
+2)List the enames, numbers and department of all clerks.
+
+mysql> select ename, empno, deptno from emp where job='clerk';
++--------+-------+--------+
+| ename  | empno | deptno |
++--------+-------+--------+
+| SMITH  |  7369 |     20 |
+| ADAMS  |  7876 |     20 |
+| JAMES  |  7900 |     30 |
+| MILLER |  7934 |     10 |
++--------+-------+--------+
+
+3) Find the department numbers and the name of employee of all dept with Deptno greater
+or equal to 20.
+4) Find the employees numbers whose commission is greater than their salary.
+
+mysql> select empno from emp where comm > sal;
++-------+
+| empno |
++-------+
+|  7654 |
++-------+
+
+5) Find the employee names whose commission is greater than 60 percent of their salary.
+
+mysql> select empno from emp where comm > sal % 60;
++-------+
+| empno |
++-------+
+|  7499 |
+|  7521 |
+|  7654 |
++-------+
+
+6) Find the employee names whose commission is greater than 50 percent of their salary.
+
+mysql> select empno from emp where comm > sal % 50;
++-------+
+| empno |
++-------+
+|  7499 |
+|  7521 |
+|  7654 |
++-------+
+
+7) List the name, job and salary of all employees in dept 20 who earn more than 2000.
+
+ select ename, job, sal from emp where sal>2000 and deptno = 20;
++-------+---------+---------+
+| ename | job     | sal     |
++-------+---------+---------+
+| JONES | MANAGER | 2975.00 |
+| SCOTT | ANALYST | 3000.00 |
+| FORD  | ANALYST | 3000.00 |
++-------+---------+---------+
+
+8) Find all salesmen in dept 30 whose salary is greater than or equal to Rs. 1500.
+
+mysql> select * from emp where job='SALESMAN' and sal>=1500;
++-------+--------+----------+------+------------+---------+--------+--------+
+| EMPNO | ENAME  | JOB      | MGR  | HIREDATE   | SAL     | COMM   | DEPTNO |
++-------+--------+----------+------+------------+---------+--------+--------+
+|  7499 | ALLEN  | SALESMAN | 7698 | 2012-01-02 | 1600.00 | 300.00 |     30 |
+|  7844 | TURNER | SALESMAN | 7698 | 2012-01-20 | 1500.00 |   0.00 |     30 |
++-------+--------+----------+------+------------+---------+--------+--------+
+
+9) Find all the employees whose job is either a president or manager.
+
+mysql> select * from emp where job='MANAGER' or job = 'PRESIDENT';
++-------+-------+-----------+------+------------+---------+------+--------+
+| EMPNO | ENAME | JOB       | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-------+-----------+------+------------+---------+------+--------+
+|  7566 | JONES | MANAGER   | 7839 | 2013-01-02 | 2975.00 | NULL |     20 |
+|  7698 | BLAKE | MANAGER   | 7839 | 2012-01-06 | 2850.00 | NULL |     30 |
+|  7782 | CLARK | MANAGER   | 7839 | 2012-01-06 | 2450.00 | NULL |     10 |
+|  7839 | KING  | PRESIDENT | NULL | 2012-01-15 | 5000.00 | NULL |     10 |
++-------+-------+-----------+------+------------+---------+------+--------+
+
+10) Find all managers who are not in dept 30.
+
+
+mysql> select * from emp where job='MANAGER' or deptno!=30;
++-------+--------+-----------+------+------------+---------+------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+--------+-----------+------+------------+---------+------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 2012-02-02 |  800.00 | NULL |     20 |
+|  7566 | JONES  | MANAGER   | 7839 | 2013-01-02 | 2975.00 | NULL |     20 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 2012-01-06 | 2850.00 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 2012-01-06 | 2450.00 | NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 2012-01-10 | 3000.00 | NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 2012-01-15 | 5000.00 | NULL |     10 |
+|  7876 | ADAMS  | CLERK     | 7788 | 2013-01-02 | 1100.00 | NULL |     20 |
+|  7902 | FORD   | ANALYST   | 7566 | 2012-04-02 | 3000.00 | NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 2012-05-02 | 1300.00 | NULL |     10 |
++-------+--------+-----------+------+------------+---------+------+--------+
+
+11) Find the details of all manager (in any dept) and all clerks in dept 10\\
+
+mysql> select * from emp where job='MANAGER' and job='clerk' or deptno=10;
++-------+--------+-----------+------+------------+---------+------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+--------+-----------+------+------------+---------+------+--------+
+|  7782 | CLARK  | MANAGER   | 7839 | 2012-01-06 | 2450.00 | NULL |     10 |
+|  7839 | KING   | PRESIDENT | NULL | 2012-01-15 | 5000.00 | NULL |     10 |
+|  7934 | MILLER | CLERK     | 7782 | 2012-05-02 | 1300.00 | NULL |     10 |
++-------+--------+-----------+------+------------+---------+------+--------+
+
+12) Find the details of all managers in dept 10 and all clerks in dept 20.
+13) And all employees who are neither clerks nor manager but whose salary is greater than or
+equal to Rs. 2000.
+14) Find the names of everyone in deptno 20 who is neither a clerk nor a Manager.
+15) Find all the details of employees who earns between Rs. 1200 and Rs.1400.
+16) Find all the details of employees who are clerks, analysts or salesman.
+17) Find all the details of employees who are not clerks, analyst or salesman.
+18) Find the names of employees who do not receive a commission.
+19) Find the employee whose commission is Rs. 0.
+20) Find the different jobs of the employees receiving commission.
