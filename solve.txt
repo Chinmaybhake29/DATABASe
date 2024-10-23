@@ -1,7 +1,11 @@
- tee D:\database\w.txt;
+
+
+tee D:\database\w.txt;
 mysql> Delimiter ;
 
 mysql> select sum(sal) as totalsal, avg(sal) as Averagesalary, count(sal) as countsal from emp;
+
+mysql> select job from emp where comm is not null;
 
 mysql> select ename, salary_is, salary_is * 0.2 as bonus from emp;
 
