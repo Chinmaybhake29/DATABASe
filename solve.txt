@@ -1,7 +1,33 @@
  tee D:\database\w.txt;
-mysql> delimiter ;
+mysql> Delimiter ;
 
-BLOB(Binary Large Object)
+mysql> select sum(sal) as totalsal, avg(sal) as Averagesalary, count(sal) as countsal from emp;
+
+mysql> select ename, salary_is, salary_is * 0.2 as bonus from emp;
+
+mysql> select ename, salary_is, (salary_is + ifnull(comm,0))*12 as Anualsalary from emp;
+mysql> select ename, salary_is, (salary_is + ifnull(comm,0))*12 as Anualsalary from emp;
+
+mysql> select ename, salary_is, salary_is + (salary_is * 0.2) as total_income from emp;
+
+mysql>select * from emp where ename like '%A';
+
+mysql>select * from emp where ename like '%R';
+
+mysql>select * from emp where ename like '%A%';
+
+ mysql>select * from emp where deptno not in (10,20);
+
+
+mysql> select ename,salary_is from emp where salary_is between 1000 and 2000;
+mysql>select ename,salary_is from emp where hiredate between '2012-01-01' and '2012-12-31';
+select ename as name, comm as comission from emp;
+
+select ename from emp where (hiredate > '2012-01-01') && (hiredate < '2014-12-31');
+
+mysql> select ename,comm from emp where comm is null;
+
+BLOB(Binary Large Object)-
 
 
 SQL> ALTER TABLE table_name
@@ -131,14 +157,23 @@ select cust_id, f_name, phone_no from cust_invoice where to_char(issue_date,'MON
 select * from movie m, invoice i, cust c where
    c.cust_id = i.cust_id and
    m.mv_no = i.mv_no
+
 3.   select f_name, area from cust;
+
 4.   select type from movie;
+
 5.   select * from cust where F_name like '_a%';
+
 6.   select * from cust where L_name like 'J%';
+
       select * from cust where L_name like 'H%';
+
 7.   select * from cust where area like '_%A';
+
 8.   select F_name,L_name from cust where area = 'MU';
+
 9.   select f_name from cust where phone_no > 555000;
+
 10. select * from cust cu, invoice i where cu.cust_id = i.cust_id;
 11. select * from invoice where cust_id in('A01','A02');
 12. select title from movie where type = 'Action' or type = 'Comedy';
