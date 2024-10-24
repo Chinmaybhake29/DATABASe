@@ -1,0 +1,13 @@
+create table emp1(
+    empno varchar(4) check(empno like 'e%') primary key,
+     ename varchar(20) not null,
+     sal float(10,2) not null
+     check(sal>10000),
+     deptno numeric(2),
+     city varchar(20) default 'nashik'
+  check(city in('nashik','pune','mum')),
+    pan char(10) unique,
+foreign key (deptno) references dept1(deptno));
+
+
+insert into emp1 values('e001','vaibhav',15000,10,default,'p001');
