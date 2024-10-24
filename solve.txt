@@ -1,4 +1,4 @@
-
+insert into cardtype values(card_id, 'CREDIT CARD');
 
 tee D:\database\w.txt;
 mysql> Delimiter ;
