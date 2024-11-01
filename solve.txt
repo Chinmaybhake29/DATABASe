@@ -1,3 +1,31 @@
+mysql> delimiter &&
+mysql> create procedure getcardname(in  name_on_card varchar(40))
+    -> begin
+    -> select * from cardinfo where  name_on_card= name_on_card;
+    -> end &&
+
+mysql> delimiter &&
+mysql> create procedure getdeptinfo(in deptno decimal)
+    -> begin
+    -> select * from dept where deptno=deptno;
+    -> end &&
+
+mysql> delimiter &&
+mysql> create procedure insertdept(in deptno decimal, in dname varchar(20), in loc varchar(30))
+    -> begin
+    -> insert into dept(deptno,dname,loc)values(deptno,dname,loc);
+    -> end &&
+
+show procedure status where db='cdac';
+
+mysql> delimiter &&
+mysql> create procedure getname()
+    -> begin
+    -> select ename from emp;
+    -> end &&;
+
+mysql> select * from emp as e inner join dept as d on e.deptno=d.deptno;
+
 insert into cardtype values(card_id, 'CREDIT CARD');
 
 tee D:\database\w.txt;
