@@ -1,3 +1,6 @@
+
+mysql> select ename from emp where job not in (select job from emp where ename in ('smith','allen'));
+
 mysql> delimiter &&
 mysql> create procedure getcardname(in  name_on_card varchar(40))
     -> begin
